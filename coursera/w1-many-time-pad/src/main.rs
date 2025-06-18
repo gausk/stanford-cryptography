@@ -1,10 +1,16 @@
 use hex;
 
 fn retrieve_key(key: &mut [u8], c1: &[u8], c2: &[u8], c3: &[u8], target: &[u8]) {
-    let min_len = [c1.len(), c2.len(), c3.len(), key.len()].iter().min().unwrap().clone();
+    let min_len = [c1.len(), c2.len(), c3.len(), key.len()]
+        .iter()
+        .min()
+        .unwrap()
+        .clone();
     for i in 0..min_len {
         let output = target[i] ^ key[i];
-        if key[i] != 0 && (output.is_ascii_alphabetic() || output == b' ' || output == b':' || output == b',') {
+        if key[i] != 0
+            && (output.is_ascii_alphabetic() || output == b' ' || output == b':' || output == b',')
+        {
             continue;
         }
         let c12 = c1[i] ^ c2[i];
@@ -25,7 +31,13 @@ fn find_key(key: &mut [u8], ciphertexts: &[Vec<u8>], target: &[u8]) {
     for i in 0..ciphertexts.len() - 2 {
         for j in i + 1..ciphertexts.len() - 1 {
             for k in j + 1..ciphertexts.len() {
-                retrieve_key(key, &ciphertexts[i], &ciphertexts[j], &ciphertexts[k], &target);
+                retrieve_key(
+                    key,
+                    &ciphertexts[i],
+                    &ciphertexts[j],
+                    &ciphertexts[k],
+                    &target,
+                );
             }
         }
     }
@@ -54,18 +66,7 @@ fn main() {
 
     let target_ciphertext = hex::decode("32510ba9babebbbefd001547a810e67149caee11d945cd7fc81a05e9f85aac650e9052ba6a8cd8257bf14d13e6f0a803b54fde9e77472dbff89d71b57bddef121336cb85ccb8f3315f4b52e301d16e9f52f904").unwrap();
 
-    let ciphertexts = vec![
-        c1,
-        c2,
-        c3,
-        c4,
-        c5,
-        c6,
-        c7,
-        c8,
-        c9,
-        c10
-    ];
+    let ciphertexts = vec![c1, c2, c3, c4, c5, c6, c7, c8, c9, c10];
 
     let keylen = target_ciphertext.len();
     let mut key = vec![0; keylen];

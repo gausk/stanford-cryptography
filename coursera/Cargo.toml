@@ -1,0 +1,6 @@
+[workspace]
+members = [
+    "w1-many-time-pad",
+    "w2-aes",
+    "w3-mac",
+]

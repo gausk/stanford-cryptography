@@ -1,0 +1,40 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: coursera
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: actions/setup-rust@v1
+        with:
+          rust-version: stable
+
+      - name: Build all crates
+        run: cargo build --workspace --verbose
+
+      - name: Run all assignments
+        run: |
+          for crate in */Cargo.toml; do
+            crate_name=$(basename $(dirname "$crate"))
+            echo "Running $crate_name..."
+            cargo run -p "$crate_name" --verbose
+          done
+
+      - name: Run all tests
+        run: cargo test --workspace --verbose
