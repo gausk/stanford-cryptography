@@ -21,15 +21,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build all crates
-        run: cargo build --workspace --verbose
+        run: cargo build --workspace --verbose --release
 
       - name: Run all assignments
         run: |
           for crate in */Cargo.toml; do
             crate_name=$(basename $(dirname "$crate"))
             echo "Running $crate_name..."
-            cargo run -p "$crate_name" --verbose
+            cargo run -p "$crate_name" --verbose --release
           done
 
       - name: Run all tests
-        run: cargo test --workspace --verbose
+        run: cargo test --workspace --verbose --release
