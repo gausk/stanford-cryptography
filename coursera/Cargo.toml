@@ -3,4 +3,5 @@ members = [
     "w1-many-time-pad",
     "w2-aes",
     "w3-mac",
+    "w4-padding-oracle",
 ]
