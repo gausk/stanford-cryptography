@@ -1372,6 +1372,7 @@ dependencies = [
 name = "w6-break-rsa"
 version = "0.1.0"
 dependencies = [
+ "hex",
  "num-bigint",
  "num-traits",
 ]
