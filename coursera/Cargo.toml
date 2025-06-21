@@ -5,4 +5,5 @@ members = [
     "w3-mac",
     "w4-padding-oracle",
     "w5-mitm-dlog",
+    "w6-break-rsa",
 ]

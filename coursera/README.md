@@ -36,14 +36,14 @@ Each week’s assignment is located in its own subdirectory:
 - `w3-mac/`
 - `w4-padding-oracle/`
 - `w5-mitm-dlog/`
-- `w6-rsa-problem/`
+- `w6-break-rsa/`
 
 [week-1]: w1-many-time-pad/
 [week-2]: w2-aes/
 [week-3]: w3-mac/
 [week-4]: w4-padding-oracle/
 [week-5]: w5-mitm-dlog/
-[week-6]: w6-rsa-problem/
+[week-6]: w6-break-rsa/
 
 ---
 
